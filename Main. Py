@@ -1,0 +1,93 @@
+import random
+
+def allocate(resources, users):
+    allocations = {}
+    for user in users:
+        allocation = random.randint(0, resources)
+        allocations[user] = allocation
+    return allocations
+
+def main():
+    resources = 100
+    users = ["Alice", "Bob", "Carol"]
+
+    allocations = allocate(resources, users)
+
+    print(allocations)
+
+if __name__ == "__main__":
+    main()
+resources = 100
+users = ["Alice", "Bob", "Carol"]
+
+allocations = allocate(resources, users)
+
+print(allocations)
+import random
+import nltk
+from transformers import BertModel, BertTokenizer
+
+def generate_response(query):
+    # Load the Transformer model.
+    model = BertModel.from_pretrained("bert-base-uncased")
+
+    # Tokenize the user query.
+    tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+    query_tokens = tokenizer(query)["input_ids"]
+
+    # Generate a response.
+    response = model(query_tokens)[0][0]
+
+    # Decode the response.
+    response = tokenizer.decode(response, clean=True)
+
+    return response
+
+def get_response_from_knowledge_base(query):
+    # Find the most relevant response in the knowledge base.
+    response = None
+    max_score = 0
+
+    for knowledge_base_response in knowledge_base_responses:
+        score = nltk.jaccard_similarity(query, knowledge_base_response)
+        if score > max_score:
+            max_score = score
+            response = knowledge_base_response
+
+    return response
+
+def allocate(resources, users):
+    allocations = {}
+    for user in users:
+        allocation = random.randint(0, resources)
+        allocations[user] = allocation
+    return allocations
+
+def main():
+    resources = 100
+    users = ["Alice", "Bob", "Carol"]
+
+    allocations = allocate(resources, users)
+
+    print(allocations)
+
+    # Add the features and allocation as mentioned
+
+    # Get the user input
+    user_input = input("Enter your query: ")
+
+    # Generate a response
+    response = generate_response(user_input)
+
+    # Get the allocation for the user
+    allocation = allocations[user_input]
+
+    # Print the response and allocation
+    print("Response:", response)
+    print("Allocation:", allocation)
+
+if __name__ == "__main__":
+    main()
+   
+
+
